@@ -1,10 +1,9 @@
 #!/usr/bin/python3
-
-"""
- Post new OTRS tickets to Slack channel
-
- Oliver Völker <info@ovtec.it>
-"""
+#
+# Post new OTRS tickets to Slack channel
+#
+# Oliver Völker <info@ovtec.it>
+#
 
 import os
 import pymysql
@@ -34,7 +33,7 @@ if len(sys.argv) < 3:
 
 conn = pymysql.connect(host=MYSQL_HOST, port=MYSQL_PORT, user=MYSQL_USER, passwd=MYSQL_PASS, db=MYSQL_DB)
 cur = conn.cursor()
-sql = 'SELECT id, tn, title, customer_id FROM ticket WHERE tn = %s'
+sql = "SELECT id, tn, title, customer_id FROM ticket WHERE tn = %s"
 cur.execute(sql, sys.argv[1])
 
 #print(cur.description)
