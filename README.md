@@ -32,7 +32,7 @@ Settings:
   * ie. Queue "Support" only
 
 * Execute Ticket Commands:
-  * CMD: . /opt/otrs2slack/.secrets && /opt/otrs2slack/otrs2slack.py
+  * CMD: `. /opt/otrs2slack/.secrets && /opt/otrs2slack/otrs2slack.py`
 
 ## SETUP SLACK
 
