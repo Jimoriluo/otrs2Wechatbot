@@ -1,10 +1,12 @@
 # otrs2slack
-Post new OTRS tickets to Slack (written in python)
+Post new OTRS tickets to Slack (written in python).
 
 ## PREREQUISITES
 
-Debian OS
+Debian OS:
+```
 sudo apt install python3-pymysql python3-requests
+```
 
 ## CLONE THE REPO
 
@@ -19,19 +21,18 @@ git clone https://github.com/magenbrot/otrs2slack.git
 Goto Admin -> Generic Agent -> Add Job
 
 Settings:
+* Job name: OTRS to Slack
 
-Job name: OTRS to Slack
+* Event Based Execution:
+  * Event Trigger:
+  * Type: Ticket
+  * Event: TicketCreate
 
-Event Based Execution:
-  Event Trigger:
-    Type: Ticket
-    Event: TicketCreate
+* Select Tickets:
+  * ie. Queue "Support" only
 
-Select Tickets:
-  ie. Queue "Support" only
-
-Execute Ticket Commands:
-  CMD: . /opt/otrs2slack/.secrets && /opt/otrs2slack/otrs2slack.py
+* Execute Ticket Commands:
+  * CMD: . /opt/otrs2slack/.secrets && /opt/otrs2slack/otrs2slack.py
 
 ## SETUP SLACK
 
