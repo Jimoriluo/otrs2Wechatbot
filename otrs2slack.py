@@ -34,7 +34,7 @@ if len(sys.argv) < 3:
 
 conn = pymysql.connect(host=MYSQL_HOST, port=MYSQL_PORT, user=MYSQL_USER, passwd=MYSQL_PASS, db=MYSQL_DB)
 cur = conn.cursor()
-sql = "SELECT id, tn, title, customer_id FROM ticket WHERE tn = %s"
+sql = "SELECT ticket.id, ticket.tn, ticket.title, CASE WHEN customer_company.name IS NOT NULL THEN customer_company.name ELSE ticket.customer_id END AS customer FROM ticket LEFT JOIN customer_company ON (ticket.customer_id = customer_company.customer_id) WHERE tn = %s"
 cur.execute(sql, sys.argv[1])
 
 #print(cur.description)
