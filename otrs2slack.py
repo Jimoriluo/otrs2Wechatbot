@@ -5,6 +5,7 @@
 # Oliver Völker <info@ovtec.it>
 #
 
+import json
 import os
 import pymysql
 import requests
@@ -55,11 +56,10 @@ else:
 cur.close()
 conn.close()
 
-text = "New ticket #" + tn
-
 headers = {'Content-type': 'application/json'}
-payload = '{"text": "' + text + ' from customer ' + customer + '\n' + title + '\n' + OTRS_URL + id + '"}'
+payload = {'text': 'New ticket #' + tn + ' from customer ' + customer + '\n\"' + title + '\"\n' + OTRS_URL + id}
 #print(payload)
+r = requests.post(WEBHOOK_URL, json=payload, headers=headers)
 
-r = requests.post(WEBHOOK_URL, data=payload, headers=headers)
-#print(r.text)
+if r.status_code != 200:
+    raise ValueError('Request to slack returned an error %s, the response is:\n%s' % (r.status_code, r.text))
