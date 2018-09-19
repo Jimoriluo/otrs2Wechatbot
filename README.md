@@ -1,4 +1,5 @@
 # otrs2slack
+
 Post new OTRS tickets to Slack (written in python).
 
 ## PREREQUISITES
@@ -44,4 +45,4 @@ Give the app a name and select the workspace. Navigate to incoming webhooks and 
 
 ## SETUP otrs2slack
 
-Open the .secrets file in an editor and setup the URLs and MySQL connection.
+Copy .secrets.dist to .secrets file, open it in an editor and setup the URLs and MySQL connection.
