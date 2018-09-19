@@ -14,9 +14,9 @@ import sys
 # Slack incoming webhook URL
 #
 # prod:
-#WEBHOOK_URL = os.getenv("WEBHOOK_URL")
+WEBHOOK_URL = os.getenv("WEBHOOK_URL")
 # test:
-WEBHOOK_URL = os.getenv("WEBHOOK_URL_DEV")
+#WEBHOOK_URL = os.getenv("WEBHOOK_URL_DEV")
 
 # OTRS URL
 OTRS_URL = os.getenv("OTRS_URL")
