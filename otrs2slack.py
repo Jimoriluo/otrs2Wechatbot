@@ -14,9 +14,9 @@ import sys
 # Slack incoming webhook URL
 #
 # prod:
-WEBHOOK_URL = os.getenv("WEBHOOK_URL")
+#WEBHOOK_URL = os.getenv("WEBHOOK_URL")
 # test:
-#WEBHOOK_URL = os.getenv("WEBHOOK_URL_DEV")
+WEBHOOK_URL = os.getenv("WEBHOOK_URL_DEV")
 
 # OTRS URL
 OTRS_URL = os.getenv("OTRS_URL")
@@ -57,7 +57,7 @@ cur.close()
 conn.close()
 
 headers = {'Content-type': 'application/json'}
-payload = {'text': 'New ticket #' + tn + ' from customer ' + customer + '\n\"' + title + '\"\n' + OTRS_URL + id}
+payload = {'text': 'New ticket #' + tn + ' from \"' + customer + '\" --> \"' + title + '\"\n' + OTRS_URL + id}
 #print(payload)
 r = requests.post(WEBHOOK_URL, json=payload, headers=headers)
 
