@@ -1,13 +1,11 @@
-# otrs2slack
+# otrs2Wechatbot
 
-Post new OTRS tickets to Slack (written in python).
+推送OTRS最新的工单至企业微信机器人
 
 ## PREREQUISITES
 
-Debian OS:
-```
-sudo apt install python3-pymysql python3-requests
-```
+python3-pymysql 
+python3-requests
 
 ## CLONE THE REPO
 
@@ -22,7 +20,7 @@ git clone https://github.com/magenbrot/otrs2slack.git
 Goto Admin -> Generic Agent -> Add Job
 
 Settings:
-* Job name: OTRS to Slack
+* Job name: OTRS to Wechatbot
 
 * Event Based Execution:
   * Event Trigger:
@@ -33,16 +31,9 @@ Settings:
   * ie. Queue "Support" only
 
 * Execute Ticket Commands:
-  * CMD: `. /opt/otrs2slack/.secrets && /opt/otrs2slack/otrs2slack.py`
+  * CMD: `. /opt/otrs2wechatbot/.secrets && /opt/otrs2slack/otrs2wechatbot.py`
 
-## SETUP SLACK
 
-Visit this link on [slack.com](https://api.slack.com/apps?new_app=1). Log in with the account you want to have OTRS tickets posted to.
-
-Give the app a name and select the workspace. Navigate to incoming webhooks and switch them on.
-
-"Add New Webhook to Workspace" and select the channel where you want the messages to show up. Remember the webhook URL for the next step.
-
-## SETUP otrs2slack
+## SETUP otrs2Wechatbot
 
 Copy .secrets.dist to .secrets file, open it in an editor and setup the URLs and MySQL connection.
