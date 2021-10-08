@@ -12,7 +12,7 @@ python3-requests
 Clone the repo to a folder on your OTRS host, e.g.:
 ```
 cd /opt
-git clone https://github.com/magenbrot/otrs2slack.git
+git clone https://github.com/Jimoriluo/otrs2Wechatbot.git
 ```
 
 ## SETUP OTRS
