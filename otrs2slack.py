@@ -1,9 +1,5 @@
 #!/usr/bin/python3
-#
-# Post new OTRS tickets to Slack channel
-#
-# Oliver Völker <info@ovtec.it>
-#
+
 
 import json
 import os
@@ -11,12 +7,10 @@ import pymysql
 import requests
 import sys
 
-# Slack incoming webhook URL
+
 #
 # prod:
 WEBHOOK_URL = os.getenv("WEBHOOK_URL")
-# test:
-#WEBHOOK_URL = os.getenv("WEBHOOK_URL_DEV")
 
 # OTRS URL
 OTRS_URL = os.getenv("OTRS_URL")
@@ -28,9 +22,9 @@ MYSQL_USER = os.getenv("MYSQL_USER")
 MYSQL_PASS = os.getenv("MYSQL_PASS")
 MYSQL_DB   = os.getenv("MYSQL_DB")
 
-if len(sys.argv) < 3:
-    print("too less arguments")
-    sys.exit (1)
+#if len(sys.argv) < 3:
+#    print("too less arguments")
+#    sys.exit (1)
 
 conn = pymysql.connect(host=MYSQL_HOST, port=MYSQL_PORT, user=MYSQL_USER, passwd=MYSQL_PASS, db=MYSQL_DB)
 cur = conn.cursor()
@@ -55,10 +49,17 @@ else:
 
 cur.close()
 conn.close()
+ticket = '新工单！  #' + tn + '\n来自' + customer + '：' + title + '\n' + OTRS_URL + id
+s = ticket
+headers = {"Content-type": "application/json"}
+payload = {
+    "msgtype": 'text',
+    "text": {
+        "content": s,
+    }
+}
 
-headers = {'Content-type': 'application/json'}
-payload = {'text': 'New ticket #' + tn + ' from \"' + customer + '\" --> \"' + title + '\"\n' + OTRS_URL + id}
-#print(payload)
+print(payload)
 r = requests.post(WEBHOOK_URL, json=payload, headers=headers)
 
 if r.status_code != 200:
