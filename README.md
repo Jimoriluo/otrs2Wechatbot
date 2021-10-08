@@ -31,7 +31,7 @@ Settings:
   * ie. Queue "Support" only
 
 * Execute Ticket Commands:
-  * CMD: `. /opt/otrs2wechatbot/.secrets && /opt/otrs2slack/otrs2wechatbot.py`
+  * CMD: `. /opt/otrs2wechatbot/.secrets && /opt/otrs2wechatbot/otrs2wechatbot.py`
 
 
 ## SETUP otrs2Wechatbot
