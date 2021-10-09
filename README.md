@@ -1,6 +1,6 @@
 # otrs2Wechatbot
 
-推送OTRS最新的工单至企业微信机器人
+推送OTRS工单至企业微信机器人
 
 ## PREREQUISITES
 
